@@ -1,5 +1,10 @@
-import { Redirect } from "expo-router"
+import { router } from "expo-router";
+import { Redirect } from "expo-router";
 
-export default function Page() {
-  return <Redirect href="/home" />// redirect to home page here
+const Page = () => {
+    return(
+        <Redirect href="/home" />
+    )
 }
+
+export default Page;
