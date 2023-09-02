@@ -9,7 +9,7 @@ const Layout = () => {
     const [fontLoaded] = useFonts({
         virgilRegular : require('../assets/fonts/VirgilRegular.ttf')
     })
-    
+   
     // caching the layout view
     const handleOnLayoutRootView = useCallback( async () =>{
         if(fontLoaded){
@@ -19,10 +19,6 @@ const Layout = () => {
 
     if(!fontLoaded) return <Slot />;
     return <Stack onLayout={handleOnLayoutRootView} />
-
-    
-    return (<Stack />)
-
 }
 
 

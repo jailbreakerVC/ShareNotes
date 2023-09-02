@@ -14,6 +14,9 @@ const COLORS = {
 
     blue1: "#4dabf7",
     blue2: "#a5d8ff",
+    blue3: "#89CFF0",
+    mauve1:"#E0B0FF",
+    dovegrey:"#7A7974",
 };
 
 const SIZES = {
@@ -23,6 +26,7 @@ const SIZES = {
     large: 18,
     xLarge: 20,
     xxLarge: 22,
+    xxxLarge:30
 
 }
 

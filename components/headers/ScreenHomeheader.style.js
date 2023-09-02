@@ -14,6 +14,7 @@ const styles = StyleSheet.create({
           height: dimension,
           borderRadius: SIZES.small / 1.25,
 
+
         }),   
 })
 
