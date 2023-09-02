@@ -8,7 +8,7 @@ import icons from "../constants/icons";
 const Home = () =>{
     return (
         <SafeAreaView style={{flex:1, backgroundColor: COLORS.orange1}}>
-            <Stack.Screen 
+            <Stack.Screen
                 options={{
                     headerStyle: {backgroundColor: COLORS.orange1},
                     headerShadowVisible: {backgroundColor: COLORS.green2},
@@ -18,7 +18,9 @@ const Home = () =>{
                     },
                     headerRight: () => (
                       <ScreenHomeHeaderBtn iconUrl={icons.share} dimensions="100%"/>
+
                     )
+                    
                     
                 }}
                  
