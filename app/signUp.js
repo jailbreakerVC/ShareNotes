@@ -8,6 +8,7 @@ import * as SplashScreen from "expo-splash-screen";
 import { useCallback, useState } from "react";
 import supabase from "../supabase";
 import * as SecureStore from "expo-secure-store";
+import { Redirect } from "expo-router";
 
 const SignUp = () => {
   const [email, setEmail] = useState("");
@@ -58,7 +59,7 @@ const SignUp = () => {
       // added user data to database
     }
   }
-  return (
+  return !loggedIn ? (
     <SafeAreaView style={{ flex: 1, backgroundColor: COLORS.orange2 }}>
       <Stack.Screen
         options={{
@@ -90,6 +91,8 @@ const SignUp = () => {
         </View>
       </ScrollView>
     </SafeAreaView>
+  ) : (
+    <Redirect href="/home" />
   );
 };
 
