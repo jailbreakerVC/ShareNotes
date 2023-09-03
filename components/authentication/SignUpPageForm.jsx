@@ -6,7 +6,7 @@ import styles from "./SignUpPageForm.style";
 // import { Redirect } from "expo-router";
 import { Link } from "expo-router";
 
-const SignUpPageForm = () => {
+const SignUpPageForm = ({ SignUpUser, setEmail, setPassword, setUsername }) => {
   return (
     <View>
       <View style={styles.mainContainer}>
@@ -14,19 +14,28 @@ const SignUpPageForm = () => {
       </View>
 
       <View style={styles.inputContainer}>
+        <Text>Enter a username</Text>
+        <TextInput
+          style={styles.passwordSignUpInput}
+          placeholder="ex: angry fox"
+          onChangeText={(text) => setUsername(text)}
+        />
         <Text style={{ left: 15 }}>Enter your email</Text>
         <TextInput
           style={styles.SignUpemailInput}
           placeholder="Username or Email"
+          onChangeText={(text) => setEmail(text)}
         />
         <Text style={{ left: 15 }}>Password</Text>
         <TextInput
           style={styles.passwordSignUpInput}
           placeholder="Your password"
           secureTextEntry={true}
+          onChangeText={(text) => setPassword(text)}
         />
+
         <View style>
-          <Pressable style={styles.signUpButton}>
+          <Pressable style={styles.signUpButton} onPress={SignUpUser}>
             <Text
               style={{
                 fontFamily: FONTS.regular,

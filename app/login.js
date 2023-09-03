@@ -24,7 +24,8 @@ const login = () => {
       return;
     } else {
       setLoggedin(true);
-      console.log(data);
+      console.log("USERID", data);
+      console.log(data.user.identities[0].id);
     }
   }
   return (
