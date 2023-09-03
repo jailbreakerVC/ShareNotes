@@ -7,6 +7,7 @@ import { useFonts } from "expo-font";
 import * as SplashScreen from "expo-splash-screen";
 import { useCallback, useState } from "react";
 import supabase from "../supabase";
+import * as SecureStore from "expo-secure-store";
 
 const SignUp = () => {
   const [email, setEmail] = useState("");
@@ -14,6 +15,24 @@ const SignUp = () => {
   const [loggedIn, setLoggedin] = useState(false);
   const [username, setUsername] = useState("");
 
+  async function save(key, value) {
+    await SecureStore.setItemAsync(key, value);
+  }
+
+  async function addusertodb(data, username) {
+    let { data: insertdata, error: inserterror } = await supabase
+      .from("User")
+      .insert([{ user_id: data.user.identities[0].id, name: username }])
+      .select("id");
+    // after inserting data to table, extract the id and store it in local storage
+    let key = insertdata[0].id;
+    console.log("KEY", key);
+    save("id", key.toString());
+    console.log("Data entered in db id is:", insertdata);
+    console.log("Error (if any)", inserterror);
+    // let result = await SecureStore.getItemAsync("id");
+    // console.log("result", result);
+  }
   async function SignUpUserandLogin() {
     let { signUpdata, signUperror } = await supabase.auth.signUp({
       email: `${email}`,
@@ -35,6 +54,8 @@ const SignUp = () => {
       setLoggedin(true);
       console.log("USERID", data);
       console.log(data.user.identities[0].id);
+      await addusertodb(data, username);
+      // added user data to database
     }
   }
   return (
