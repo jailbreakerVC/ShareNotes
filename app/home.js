@@ -27,20 +27,7 @@ const Home = () =>{
     useEffect(() => {
         getAllFoldersForUser()
     }, [])
-
-    let folders_data;
-    if (folders) {
-        folders_data = folders.map((folder) => {
-            return <View>
-                <Text>
-                    {folder.name}
-                </Text>
-            </View>
-    }
-    )
-    }
-
-
+    
     
     
     return (
@@ -67,7 +54,6 @@ const Home = () =>{
                 <Text>
                 Your folders!
                 </Text>
-                {folders_data}
                 
             </View>
 
