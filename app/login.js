@@ -7,11 +7,16 @@ import { COLORS, FONTS, SIZES } from "../constants/theme";
 import { ScrollView } from "react-native-gesture-handler";
 import { Stack } from "expo-router";
 import LoggedInForm from "../components/authentication/LoggedInForm";
+import * as SecureStore from "expo-secure-store";
 
 const login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [loggedIn, setLoggedin] = useState(false);
+
+  async function save(key, value) {
+    await SecureStore.setItemAsync(key, value);
+  }
 
   async function signInWithEmail() {
     let { data, error } = await supabase.auth.signInWithPassword({
@@ -26,7 +31,19 @@ const login = () => {
       setLoggedin(true);
       console.log("USERID", data);
       console.log(data.user.identities[0].id);
+      let { data: insertdata, error: inserterror } = await supabase
+      .from("User")
+      .select("id")
+      .eq("user_id", data.user.identities[0].id);
+    // take the user 
+    let key = insertdata[0].id;
+    console.log("login user key", key);
+    save("id", key.toString());
     }
+
+
+    
+    
   }
   return (
     <SafeAreaView style={{ flex: 1, backgroundColor: COLORS.mauve1 }}>
