@@ -31,8 +31,6 @@ const SignUp = () => {
     save("id", key.toString());
     console.log("Data entered in db id is:", insertdata);
     console.log("Error (if any)", inserterror);
-    // let result = await SecureStore.getItemAsync("id");
-    // console.log("result", result);
   }
   async function SignUpUserandLogin() {
     let { signUpdata, signUperror } = await supabase.auth.signUp({
