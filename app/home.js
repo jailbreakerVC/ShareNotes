@@ -1,4 +1,4 @@
-import { Text, SafeAreaView, View, ScrollView } from "react-native";
+import { Text, SafeAreaView, View, ScrollView, StyleSheet } from "react-native";
 import { Stack } from "expo-router";
 import { COLORS, FONTS, SIZES } from "../constants/theme";
 import styles from "../styles/search";
@@ -45,15 +45,26 @@ const Home = () => {
       />
 
       {/* loading? <Notebook></Notebook> */}
-      <ScrollView>
+      <View style={home.parentView}>
+        {/* <ScrollView style> */}
         {folders ? (
           folders.map((data) => <Notebook information={data} />)
         ) : (
           <Text>No notebooks exist </Text>
         )}
-      </ScrollView>
+        {/* </ScrollView> */}
+      </View>
     </SafeAreaView>
   );
 };
 
 export default Home;
+
+const home = StyleSheet.create({
+  parentView: {
+    marginTop: 25,
+    flex: 1,
+    flexDirection: "row",
+    justifyContent: "space-around",
+  },
+});
