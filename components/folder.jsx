@@ -1,5 +1,12 @@
 import React from "react";
-import { Pressable, View, StyleSheet, Text } from "react-native";
+import {
+  Pressable,
+  View,
+  StyleSheet,
+  Text,
+  Button,
+  Linking,
+} from "react-native";
 import { Link } from "expo-router";
 
 const Folder = (data) => {
@@ -9,6 +16,12 @@ const Folder = (data) => {
       <View style={styles.container}>
         <View style={styles.square} />
         <Text>{data.information.name}</Text>
+        <Button
+          title="OPEn"
+          onPress={() => {
+            return Linking.openURL(data.information.link);
+          }}
+        ></Button>
         {/* <Link
           href={{
             pathname: "/pdf/[note]",
@@ -17,8 +30,8 @@ const Folder = (data) => {
             },
           }}
         >
-          Open PDF
-        </Link> */}
+          Open PDF */}
+        {/* </Link> */}
       </View>
     </Pressable>
   );
