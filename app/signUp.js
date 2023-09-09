@@ -5,7 +5,7 @@ import { ScrollView } from "react-native-gesture-handler";
 import SignUpPageForm from "../components/authentication/SignUpPageForm";
 import { useFonts } from "expo-font";
 import * as SplashScreen from "expo-splash-screen";
-import { useCallback, useState } from "react";
+import { useState } from "react";
 import supabase from "../supabase";
 import * as SecureStore from "expo-secure-store";
 import { Redirect } from "expo-router";
@@ -32,6 +32,7 @@ const SignUp = () => {
     console.log("Data entered in db id is:", insertdata);
     console.log("Error (if any)", inserterror);
   }
+
   async function SignUpUserandLogin() {
     let { signUpdata, signUperror } = await supabase.auth.signUp({
       email: `${email}`,
