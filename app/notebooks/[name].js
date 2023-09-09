@@ -4,7 +4,6 @@ import { Text, SafeAreaView, View, StyleSheet } from "react-native";
 import { COLORS, FONTS, SIZES } from "../../constants/theme";
 import { useEffect, useState } from "react";
 import supabase from "../../supabase";
-import Notebook from "../../components/Notebook";
 import Folder from "../../components/folder";
 
 export default function folderpage() {

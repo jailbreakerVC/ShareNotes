@@ -1,5 +1,6 @@
 import React from "react";
 import { Pressable, View, StyleSheet, Text } from "react-native";
+import { Link } from "expo-router";
 
 const Folder = (data) => {
   console.log("Notebook data: infomation ", data.information.name);
@@ -8,6 +9,16 @@ const Folder = (data) => {
       <View style={styles.container}>
         <View style={styles.square} />
         <Text>{data.information.name}</Text>
+        {/* <Link
+          href={{
+            pathname: "/pdf/[note]",
+            params: {
+              url: data.information.link,
+            },
+          }}
+        >
+          Open PDF
+        </Link> */}
       </View>
     </Pressable>
   );
