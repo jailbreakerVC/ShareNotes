@@ -32,18 +32,14 @@ const login = () => {
       console.log("USERID", data);
       console.log(data.user.identities[0].id);
       let { data: insertdata, error: inserterror } = await supabase
-      .from("User")
-      .select("id")
-      .eq("user_id", data.user.identities[0].id);
-    // take the user 
-    let key = insertdata[0].id;
-    console.log("login user key", key);
-    save("id", key.toString());
+        .from("User")
+        .select("id")
+        .eq("user_id", data.user.identities[0].id);
+      // take the user
+      let value = insertdata[0].id;
+      console.log("login user value at login.js", value);
+      save("id", value.toString());
     }
-
-
-    
-    
   }
   return (
     <SafeAreaView style={{ flex: 1, backgroundColor: COLORS.mauve1 }}>

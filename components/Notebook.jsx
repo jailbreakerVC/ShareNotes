@@ -1,12 +1,6 @@
 import React from "react";
-import {
-  Pressable,
-  View,
-  StyleSheet,
-  Text,
-  TouchableOpacity,
-} from "react-native";
-import { Link, Redirect, useRouter } from "expo-router";
+import { Pressable, View, StyleSheet } from "react-native";
+import { Link } from "expo-router";
 
 const Notebook = (data) => {
   console.log("Notebook data: ", data);
@@ -22,11 +16,11 @@ const Notebook = (data) => {
           pathname: "/notebooks/[name]",
           params: {
             name: data.information.name.toString(),
-            id: data.information.id,
+            id: data.information.id.toString(),
           },
         });
       }}
-      id={data.information.id}
+      // id={data.information.id}
     >
       <View style={styles.container}>
         <View style={styles.square} />
@@ -35,7 +29,7 @@ const Notebook = (data) => {
             pathname: "/notebooks/[name]",
             params: {
               name: data.information.name.toString(),
-              id: data.information.id,
+              id: data.information.id.toString(),
             },
           }}
         >

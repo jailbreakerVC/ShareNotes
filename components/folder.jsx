@@ -19,19 +19,10 @@ const Folder = (data) => {
         <Button
           title="OPEn"
           onPress={() => {
+            console.log("opening url: ", data.information.link);
             return Linking.openURL(data.information.link);
           }}
         ></Button>
-        {/* <Link
-          href={{
-            pathname: "/pdf/[note]",
-            params: {
-              url: data.information.link,
-            },
-          }}
-        >
-          Open PDF */}
-        {/* </Link> */}
       </View>
     </Pressable>
   );
