@@ -7,7 +7,7 @@ import icons from "../constants/icons";
 import supabase from "../supabase";
 import { useEffect, useState } from "react";
 import * as SecureStore from "expo-secure-store";
-import Notebook from "../components/Notebook";
+import Notebook from "../components/Notebooks/Notebook";
 
 const Home = () => {
   const [folders, setFolders] = useState([]);

@@ -4,7 +4,10 @@ import { Text, SafeAreaView, View, StyleSheet } from "react-native";
 import { COLORS, FONTS, SIZES } from "../../constants/theme";
 import { useEffect, useState } from "react";
 import supabase from "../../supabase";
-import Folder from "../../components/folder";
+import Folder from "../../components/Notebooks/folder";
+import { Colors } from "react-native/Libraries/NewAppScreen";
+import { FlatList } from "react-native-gesture-handler";
+
 
 export default function folderpage() {
   const { name } = useLocalSearchParams();
@@ -40,10 +43,22 @@ export default function folderpage() {
         }}
       />
 
-      <View style={name.parentView}>
+      <View style={name.nameView}>
         {notes ? (
-          notes.map((data) => <Folder information={data} />)
+          <FlatList
+            style={{margin:10}}
+            // notes.map(()) 
+            data={notes}
+            horizontal showsHorizontalScrollIndicator={false}
+            keyExtractor={(item, index)=>index.toString()} 
+            renderItem={({item})=>(
+              <Folder information={item} />
+            )}
+          />
+          // notes.map((data) => 
+          //   <Folder information={data} />) 
         ) : (
+
           <Text>No notes exist </Text>
         )}
       </View>
@@ -52,10 +67,19 @@ export default function folderpage() {
 }
 
 const name = StyleSheet.create({
-  parentView: {
-    marginTop: 25,
-    flex: 1,
-    flexDirection: "row",
-    justifyContent: "space-around",
+  nameView: {
+    flexDirection:"row"
+    // backgroundColor:COLORS.mauve1,
+    // padding:"20px",
+    // display:"flex",
+    // height:100,
+    // width:100,
+    // position:"relative",
+    // left:20,
+    // marginTop: ,
+    // flex: 1,
+    // flexDirection: "row",
+    // justifyContent: "space-around",
   },
+
 });

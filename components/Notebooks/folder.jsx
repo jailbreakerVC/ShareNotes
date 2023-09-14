@@ -7,42 +7,35 @@ import {
   Button,
   Linking,
 } from "react-native";
+import styles from "./folder.style";
 import { Link } from "expo-router";
+import { COLORS } from "../../constants/theme";
 
 const Folder = (data) => {
   console.log("Notebook data: infomation ", data.information.name);
   return (
-    <Pressable>
+    // <View style={{backgroundColor:COLORS.dovegrey}}>    
+    <Pressable style={{padding:20 , margin:10 , display:"flex" , flexDirection:"row"}}>
       <View style={styles.container}>
-        <View style={styles.square} />
         <Text>{data.information.name}</Text>
-        <Button
-          title="OPEn"
+        <View style={styles.square} />  
+        <View style={{marginTop:5}}>        
+          <Button
+          title="OPEN"
           onPress={() => {
             console.log("opening url: ", data.information.link);
             return Linking.openURL(data.information.link);
           }}
+
         ></Button>
+        </View>
       </View>
     </Pressable>
+  // </View>
+
   );
 };
 
-const styles = StyleSheet.create({
-  container: {
-    alignItems: "center",
-    justifyContent: "center",
-    width: 100, // Adjust the size as needed
-    height: 100, // Adjust the size as needed
-  },
-  square: {
-    width: "100%",
-    height: "100%",
-    backgroundColor: "transparent",
-    borderWidth: 2, // Border width to mimic a pencil-like border
-    borderColor: "black", // Border color
-    borderRadius: 15, // Adjust the radius to make the corners rounded
-  },
-});
+
 
 export default Folder;
