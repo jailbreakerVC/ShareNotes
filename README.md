@@ -1,6 +1,5 @@
-# ShareNotes\
-
-[![Made with Supabase](https://supabase.com/badge-made-with-supabase-dark.svg)](https://supabase.com)
+# ShareNotes 
+\[![Made with Supabase](https://supabase.com/badge-made-with-supabase-dark.svg)](https://supabase.com)
 An easy to use mobile application built for sharing notes with your friends.
 
 ![sharenotes ui](public/sharenoteUI.png)
